@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" type="text/css">
+    
 </head>
 <body>
 
@@ -20,34 +21,34 @@
         <div class="input-group-prepend" id="button-addon3">
             <label class="input-group-text" for="inputGroupSelect01">09am</label><!--Need to figure out how to make the numbers even, if the 0 isn't there it's odd-->
         </div>
-        <input type="text" class="form-control" placeholder="Type Here">
+        <textarea type="text" class="form-control p-5 input9" rows="2" placeholder="Type Here"></textarea><!--added input9 class-->
         <div class="input-group-append">
-          <button class="btn btn-outline-primary" type="button">Save</button> <!--Need to add an hour mark before this box and have the button act as a save to local data button-->
+          <button class="btn btn-outline-primary btn9" type="button">Save</button> <!--added btn9 class-->
         </div>
     </div>
     <div class="input-group">
         <div class="input-group-prepend" id="button-addon3">
             <label class="input-group-text" for="inputGroupSelect01">10am</label>
         </div>
-        <input type="text" class="form-control" placeholder="Type Here">
+        <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
-          <button class="btn btn-outline-primary" type="button">Save</button> <!--Need to add an hour mark before this box and have the button act as a save to local data button-->
+          <button class="btn btn-outline-primary" type="button">Save</button> 
         </div>
     </div>
     <div class="input-group">
         <div class="input-group-prepend" id="button-addon3">
             <label class="input-group-text" for="inputGroupSelect01">11am</label>
         </div>
-        <input type="text" class="form-control" placeholder="Type Here">
+        <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
-          <button class="btn btn-outline-primary" type="button">Save</button> <!--Need to add an hour mark before this box and have the button act as a save to local data button-->
+          <button class="btn btn-outline-primary" type="button">Save</button> 
         </div>
     </div>
     <div class="input-group">
         <div class="input-group-prepend" id="button-addon3">
             <label class="input-group-text" for="inputGroupSelect01">12pm</label>
         </div>
-        <input type="text" class="form-control" placeholder="Type Here">
+        <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-primary" type="button">Save</button>
         </div>
@@ -56,7 +57,7 @@
         <div class="input-group-prepend" id="button-addon3">
             <label class="input-group-text" for="inputGroupSelect01">01pm</label>
         </div>
-        <input type="text" class="form-control" placeholder="Type Here">
+        <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-primary" type="button">Save</button>
         </div>
@@ -65,7 +66,7 @@
         <div class="input-group-prepend" id="button-addon3">
             <label class="input-group-text" for="inputGroupSelect01">02pm</label>
         </div>
-        <input type="text" class="form-control" placeholder="Type Here">
+        <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-primary" type="button">Save</button>
         </div>
@@ -74,7 +75,7 @@
         <div class="input-group-prepend" id="button-addon3">
             <label class="input-group-text" for="inputGroupSelect01">03pm</label>
         </div>
-        <input type="text" class="form-control" placeholder="Type Here">
+        <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-primary" type="button">Save</button>
         </div>
@@ -83,7 +84,7 @@
         <div class="input-group-prepend" id="button-addon3">
             <label class="input-group-text" for="inputGroupSelect01">04pm</label>
         </div>
-        <input type="text" class="form-control" placeholder="Type Here">
+        <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-primary" type="button">Save</button>
         </div>
@@ -92,7 +93,7 @@
         <div class="input-group-prepend" id="button-addon3">
             <label class="input-group-text" for="inputGroupSelect01">05pm</label>
         </div>
-        <input type="text" class="form-control" placeholder="Type Here">
+        <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-primary" type="button">Save</button>
         </div>
@@ -100,17 +101,49 @@
     
 </div>
 
-
+<!--Need to add a css style of red or green color background to be added to the rows in which the time is at or passed using an if function to check the time and appy background colors accordingly-->
 
     <script src="lib/Moment/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
+    const clockEl = document.querySelector(".clock");
+    const input9El = document.querySelector(".input9");
+    const btn9El = document.querySelector(".btn9");
+    var m = moment()
+        //curious as to why if these var elements are taken out of setInterval then it won't update the time...scoping issue?
         setInterval(() => {
-        const clockEl = document.querySelector(".clock");
-        const m = moment();
-        const t = m.format("dddd, MMMM Do YYYY, hh:mm:ss a"); //m.format("") is a token and what goes in the "" is what will display
+        var m = moment();
+        var t = m.format("dddd, MMMM Do YYYY, hh:mm:ss a"); //m.format("") is a token and what goes in the "" is what will display
         clockEl.innerHTML = t;
-        }, 100);
+        });
+   
+        console.log(m.format("hh"));
 
+        $(btn9El).click(function(){
+            var str = $(input9El).val();
+            console.log(str);
+            localStorage.setItem("stored9", str);
+            
+        })
+        var getStored9 = localStorage.getItem("stored9");
+        $(input9El).val(getStored9);//can't figure out why this won't save to the input box
+
+
+
+
+
+        //This code below will store Smith to local storage and then retrieve it and then console log it
+        //Set
+        localStorage.setItem("lastname", "Smith");
+
+        //Get
+        var lastName = localStorage.getItem("lastname");
+
+        console.log(lastName);
+
+
+    
     </script>
+    
 </body>
 </html>
