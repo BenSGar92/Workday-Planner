@@ -9,19 +9,50 @@
 </head>
 <body>
 
-<div class=container>
+<div class="container">
     <h1>Workday Planner</h1>
     <h2 class=dateHeader></h2>
 </div>
 
 
-<div class=container>
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+<div class="container">
+    <div class="input-group">
+        <div class="input-group-prepend" id="button-addon3">
+            <label class="input-group-text" for="inputGroupSelect01">09am</label><!--Need to figure out how to make the numbers even, if the 0 isn't there it's odd-->
+        </div>
+        <input type="text" class="form-control" placeholder="Type Here">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+          <button class="btn btn-outline-primary" type="button">Save</button> <!--Need to add an hour mark before this box and have the button act as a save to local data button-->
         </div>
     </div>
+    <div class="input-group">
+        <div class="input-group-prepend" id="button-addon3">
+            <label class="input-group-text" for="inputGroupSelect01">10am</label>
+        </div>
+        <input type="text" class="form-control" placeholder="Type Here">
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="button">Save</button> <!--Need to add an hour mark before this box and have the button act as a save to local data button-->
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend" id="button-addon3">
+            <label class="input-group-text" for="inputGroupSelect01">11am</label>
+        </div>
+        <input type="text" class="form-control" placeholder="Type Here">
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="button">Save</button> <!--Need to add an hour mark before this box and have the button act as a save to local data button-->
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend" id="button-addon3">
+            <label class="input-group-text" for="inputGroupSelect01">12pm</label>
+        </div>
+        <input type="text" class="form-control" placeholder="Type Here">
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="button">Save</button> <!--Need to add an hour mark before this box and have the button act as a save to local data button-->
+        </div>
+    </div>
+    
 </div>
 
 
@@ -29,17 +60,15 @@
     <script src="lib/Moment/moment.min.js"></script>
     <script>
         const dateHeaderEl = document.querySelector(".dateHeader");
-
-
         const m = moment();
 
+        dateHeaderEl.innerHTML = m.format("dddd") + " - " + m.format("MMMM") + " " + m.format("D") + ", " + m.format("YYYY") + " - " + m.format("HH") + ":" + m.format("mm") + ":" + m.format("ss"); //m.format("") is a token and what goes in the "" is what will display
         
-        dateHeaderEl.innerHTML = m.format("MMMM") + "," + m.format("D") + " " + m.format("YYYY");
-        console.log(m.format("dddd"));//this is a token that represents the day of the week and can be found in moment.js display tab
-        console.log(m.format("MMMM"));
-        console.log(m.format("D"));
-        console.log(m.format("YYYY"));
-        console.log(m.format(""));
+
+        setInterval(() => {
+            console.log(m.format("ss"));
+        }, 1000);
+
     </script>
 </body>
 </html>
