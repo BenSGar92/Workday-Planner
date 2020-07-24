@@ -133,8 +133,8 @@ var m = moment();
 
     //here is where I will use the hour number to write an if function that will have css add color properties
 
-    // const hour = parseInt(m.format("HH"));
-    const hour = 10;//comment this out to test the different hours of the day - military time
+    const hour = parseInt(m.format("HH"));
+    // const hour = 10;//comment this out to test the different hours of the day - military time
     if (hour < 9) {
         $('.time').addClass('futureHour');//this jquery addCLass method will add to all classes
     } else if (hour === 9) {
@@ -181,7 +181,7 @@ var m = moment();
         $('.color05').removeClass('futureHour')
         $('.color05').addClass('currentHour');
     } else {
-        $('.time').addClass('endOfDay')
+        $('.time').addClass('pastHour')
     }
     
 
