@@ -1,18 +1,26 @@
 .pastHour {
-    background-color: gray;
+    background-color: 	rgb(128, 128, 128);
 }
 
 .currentHour {
-    background-color: red;;
+    background-color: rgb(255, 0, 0);
 }
 
 .futureHour {
-    background-color: green;
+    background-color: rgb(0, 204, 0);
 }
 
 .endOfDay {
     background-image: linear-gradient(to left, green, yellow, orange, red);
   }
+
+body {
+    background: url(https://images.pexels.com/photos/434337/pexels-photo-434337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 
 
