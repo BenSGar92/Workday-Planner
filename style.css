@@ -1,10 +1,21 @@
+.pastHour {
+    background-color: gray;
+}
+
+.currentHour {
+    background-color: red;;
+}
+
 .futureHour {
     background-color: green;
 }
 
-.currentHour {
-    background-color: rgba(38, 181, 33, .4);
-}
+.endOfDay {
+    background-image: linear-gradient(to left, green, yellow, orange, red);
+  }
+
+
+
 
 .input-group-text {
     color: blue;
