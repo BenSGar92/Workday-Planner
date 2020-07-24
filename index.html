@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" type="text/css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -18,12 +18,12 @@
 
 <div class="container">
     <div class="input-group">
-        <div class="input-group-prepend unique" id="button-addon3">
-            <label class="input-group-text hour9 time color09" for="inputGroupSelect01">09am</label><!--Need to figure out how to make the numbers even, if the 0 isn't there it's odd-->
+        <div class="input-group-prepend" id="button-addon3">
+            <label class="input-group-text hour9 time color09" for="inputGroupSelect01">09am</label>
         </div>
-        <textarea type="text" class="form-control p-5" id="input09" rows="2" placeholder="Type Here"></textarea><!--added input9 class-->
+        <textarea type="text" class="form-control p-5" id="input09" rows="2" placeholder="Type Here"></textarea>
         <div class="input-group-append">
-          <button class="btn btn-outline-primary btn9" type="button">Save</button> <!--added btn9 class-->
+          <button class="btn btn-outline-primary btn9" type="button">Save</button>
         </div>
     </div>
     <div class="input-group">
@@ -100,7 +100,6 @@
     </div>
 </div>
 
-<!--Need to add a css style of red or green color background to be added to the rows in which the time is at or passed using an if function to check the time and appy background colors accordingly-->
 
 <script src="lib/Moment/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -183,22 +182,6 @@ var m = moment();
     } else {
         $('.time').addClass('pastHour')
     }
-    
-
-
-
-
-
-    // //This code below will store Smith to local storage and then retrieve it and then console log it
-    // //Set
-    // localStorage.setItem("lastname", "Smith");
-
-    // //Get
-    // var lastName = localStorage.getItem("lastname");
-
-    // console.log(lastName);
-
-
 
 </script>
     

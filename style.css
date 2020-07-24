@@ -18,11 +18,17 @@ body {
     background-size: cover;
 }
 
-
-
+* {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+}
 
 .input-group-text {
     color: blue;
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+.time {
+    width: 90px;
 }
