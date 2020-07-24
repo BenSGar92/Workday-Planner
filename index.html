@@ -106,14 +106,13 @@
     <script src="lib/Moment/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-    const clockEl = document.querySelector(".clock");
     var m = moment();
         
         //This is the live clock using tokens from moment.js
         setInterval(() => {
         var m = moment();
         var t = m.format("dddd, MMMM Do YYYY, hh:mm:ss a"); //m.format("") is a token and what goes in the "" is what will display
-        clockEl.innerHTML = t;//change this to jQuery!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        $('.clock').text(t);
         });
 
         //button function will save text from textarea field to local storage by traversing the DOM
