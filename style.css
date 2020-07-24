@@ -1,0 +1,13 @@
+.futureHour {
+    background-color: green;
+}
+
+.currentHour {
+    background-color: rgba(38, 181, 33, .4);
+}
+
+.input-group-text {
+    color: blue;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

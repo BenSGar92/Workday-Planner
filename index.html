@@ -18,17 +18,26 @@
 
 <div class="container">
     <div class="input-group">
-        <div class="input-group-prepend" id="button-addon3">
-            <label class="input-group-text" for="inputGroupSelect01">09am</label><!--Need to figure out how to make the numbers even, if the 0 isn't there it's odd-->
+        <div class="input-group-prepend unique" id="button-addon3">
+            <label class="input-group-text hour9 time" for="inputGroupSelect01">09am</label><!--Need to figure out how to make the numbers even, if the 0 isn't there it's odd-->
         </div>
-        <textarea type="text" class="form-control p-5 input9" rows="2" placeholder="Type Here"></textarea><!--added input9 class-->
+        <textarea type="text" class="form-control p-5" id="input9" rows="2" placeholder="Type Here"></textarea><!--added input9 class-->
         <div class="input-group-append">
           <button class="btn btn-outline-primary btn9" type="button">Save</button> <!--added btn9 class-->
         </div>
     </div>
     <div class="input-group">
         <div class="input-group-prepend" id="button-addon3">
-            <label class="input-group-text" for="inputGroupSelect01">10am</label>
+            <label class="input-group-text time" for="inputGroupSelect01">10am</label>
+        </div>
+        <textarea type="text" class="form-control p-5" id="input10" placeholder="Type Here"></textarea>
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="button">Save</button> 
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend" id="button-addon3">
+            <label class="input-group-text time" for="inputGroupSelect01">11am</label>
         </div>
         <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
@@ -37,16 +46,7 @@
     </div>
     <div class="input-group">
         <div class="input-group-prepend" id="button-addon3">
-            <label class="input-group-text" for="inputGroupSelect01">11am</label>
-        </div>
-        <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
-        <div class="input-group-append">
-          <button class="btn btn-outline-primary" type="button">Save</button> 
-        </div>
-    </div>
-    <div class="input-group">
-        <div class="input-group-prepend" id="button-addon3">
-            <label class="input-group-text" for="inputGroupSelect01">12pm</label>
+            <label class="input-group-text time" for="inputGroupSelect01">12pm</label>
         </div>
         <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
@@ -55,7 +55,7 @@
     </div>
     <div class="input-group">
         <div class="input-group-prepend" id="button-addon3">
-            <label class="input-group-text" for="inputGroupSelect01">01pm</label>
+            <label class="input-group-text time" for="inputGroupSelect01">01pm</label>
         </div>
         <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
@@ -64,7 +64,7 @@
     </div>
     <div class="input-group">
         <div class="input-group-prepend" id="button-addon3">
-            <label class="input-group-text" for="inputGroupSelect01">02pm</label>
+            <label class="input-group-text time" for="inputGroupSelect01">02pm</label>
         </div>
         <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
@@ -73,7 +73,7 @@
     </div>
     <div class="input-group">
         <div class="input-group-prepend" id="button-addon3">
-            <label class="input-group-text" for="inputGroupSelect01">03pm</label>
+            <label class="input-group-text time" for="inputGroupSelect01">03pm</label>
         </div>
         <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
@@ -82,7 +82,7 @@
     </div>
     <div class="input-group">
         <div class="input-group-prepend" id="button-addon3">
-            <label class="input-group-text" for="inputGroupSelect01">04pm</label>
+            <label class="input-group-text time" for="inputGroupSelect01">04pm</label>
         </div>
         <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
@@ -91,7 +91,7 @@
     </div>
     <div class="input-group">
         <div class="input-group-prepend" id="button-addon3">
-            <label class="input-group-text" for="inputGroupSelect01">05pm</label>
+            <label class="input-group-text time" for="inputGroupSelect01">05pm</label>
         </div>
         <textarea type="text" class="form-control p-5" placeholder="Type Here"></textarea>
         <div class="input-group-append">
@@ -108,38 +108,57 @@
     <script>
     const clockEl = document.querySelector(".clock");
     const input9El = document.querySelector(".input9");
-    const btn9El = document.querySelector(".btn9");
-    var m = moment()
-        //curious as to why if these var elements are taken out of setInterval then it won't update the time...scoping issue?
+    const hour9El = document.querySelector(".hour9");
+    const timeEl = document.querySelector(".time");
+    var m = moment();
+        
+        //This is the live clock using tokens from moment.js
         setInterval(() => {
         var m = moment();
         var t = m.format("dddd, MMMM Do YYYY, hh:mm:ss a"); //m.format("") is a token and what goes in the "" is what will display
         clockEl.innerHTML = t;
         });
-   
-        console.log(m.format("hh"));
 
-        $(btn9El).click(function(){
-            var str = $(input9El).val();
+        //button function will save text from textarea field to local storage
+        $('.btn').click(function(){
+            var str = $(this).parents('.input-group').find('.p-5').val();
+            var time = $(this).parents('.input-group').find('.time').text();
+            localStorage.setItem(time, str); 
+            console.log(time);
             console.log(str);
-            localStorage.setItem("stored9", str);
-            
+            console.log($(this));
         })
-        var getStored9 = localStorage.getItem("stored9");
-        $(input9El).val(getStored9);//can't figure out why this won't save to the input box
+        //here is where the local storage will be extracted and added to the textarea field
+        $('#input9').val(localStorage.getItem("09am"));//this targets the ID and adds the value from the local storage
+        $('#input10').val(localStorage.getItem("10am"));
+
+
+        
+
+
+        //here is where I will use the hour number to write an if function that will have css add color properties
+        const hour = parseInt(m.format("HH"));
+        //Need to write an if function that will change the color of the textareas based on the time using element.classList.add/hide('cssElement')
+        if (hour > 9) {
+            $('.time').addClass('futureHour');//this jquery addCLass method will add to all classes
+        }else if (hour >= 9) {
+            hour9El.classList.add('currentHour');
+        }
+        //why does it not add .futureHour to all .time elements on the page??
+        //added the time class to each hour element in html to be accessed by css when called upon!!!!!!!!!!!!! this is where I left off
 
 
 
 
 
-        //This code below will store Smith to local storage and then retrieve it and then console log it
-        //Set
-        localStorage.setItem("lastname", "Smith");
+        // //This code below will store Smith to local storage and then retrieve it and then console log it
+        // //Set
+        // localStorage.setItem("lastname", "Smith");
 
-        //Get
-        var lastName = localStorage.getItem("lastname");
+        // //Get
+        // var lastName = localStorage.getItem("lastname");
 
-        console.log(lastName);
+        // console.log(lastName);
 
 
     
